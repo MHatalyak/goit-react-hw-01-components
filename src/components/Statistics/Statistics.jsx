@@ -14,10 +14,10 @@ const Statistics = ({ title, stats }) => {
     <StatisticsContainer>
       {title && <Title>{title}</Title>}
       <StatList>
-        {stats.map((stat, index) => (
-          <StatItem key={index} color={getColorByIndex(index)}>
-            <Label>{stat.label}</Label>
-            <Percentage>{stat.percentage}%</Percentage>
+        {stats.map(({ id, label, percentage }) => (
+          <StatItem key={id} color={getColorByIndex(id)}>
+            <Label>{label}</Label>
+            <Percentage>{percentage}%</Percentage>
           </StatItem>
         ))}
       </StatList>
@@ -29,15 +29,17 @@ Statistics.propTypes = {
   title: PropTypes.string,
   stats: PropTypes.arrayOf(
     PropTypes.shape({
+      id: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
-      percentage: PropTypes.string.isRequired,
+      percentage: PropTypes.number.isRequired,
     })
   ).isRequired,
 };
 
 export default Statistics;
 
-function getColorByIndex(index) {
+function getColorByIndex(id) {
   const colors = ['blue', 'purple', 'red', 'green', 'orange'];
+  const index = parseInt(id.split('-')[1], 10) - 1;
   return colors[index % colors.length];
 }

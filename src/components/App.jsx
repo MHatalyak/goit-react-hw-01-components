@@ -4,10 +4,10 @@ import Statistics from './Statistics/Statistics';
 import FriendList from './Friends/FriendList';
 import TransactionHistory from './Transaction/TransactionHistory';
 import { TransactionHistoryContainer } from './Transaction/TransactionHistory.styled';
-import user from '../user.json';
-import data from '../data.json';
-import friends from '../friends.json';
-import transactions from '../transactions.json';
+import user from '../data/user.json';
+import data from '../data/data.json';
+import friends from '../data/friends.json';
+import transactions from '../data/transactions.json';
 
 export const App = () => {
   return (
